@@ -1,0 +1,160 @@
+:root {
+    --bg: #212529;
+    --black: #213547;
+    --purple: #6741d9;
+    --purple2: #7950f2;
+    --purple3: #7950f29d;
+    --white: #fafafa;
+    --grey: #acabcf;
+}
+
+body {
+    color: var(--black);
+    font-family: "Poppins";
+    margin: 0;
+    padding: 20px;
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--purple);
+    color: var(--white);
+    padding: 10px;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.logo {
+    cursor: pointer;
+}
+
+.found {
+    font-size: smaller;
+}
+
+.searchdiv {
+    width: 40%;
+}
+
+.search {
+    border: none;
+    padding: 12px;
+    background-color: var(--purple2);
+    width: 100%;
+    border-radius: 5px;
+    outline-color: var(--white);
+    color: var(--white);
+}
+
+.search::placeholder {
+    color: var(--grey);
+}
+
+#container {
+}
+
+.one {
+    background-color: var(--purple);
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 5px;
+    color: var(--white);
+}
+
+.movies {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.license,
+.list {
+    text-align: center;
+    font-size: 30px;
+    margin: 10px;
+    color: var(--grey);
+}
+
+.license {
+    font-size: smaller;
+}
+
+.movie {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px dashed var(--purple2);
+}
+
+.movie:hover {
+    background-color: var(--purple3);
+}
+
+.banner {
+    width: 60px;
+    margin-right: 20px;
+}
+
+.title {
+    margin: 5px;
+}
+
+.year {
+    margin: 5px;
+    color: var(--grey);
+    font-size: smaller;
+}
+
+.two {
+}
+
+.watched {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px dashed var(--purple2);
+    padding: 20px;
+    position: relative;
+}
+
+.watched:hover {
+    background-color: var(--purple3);
+}
+
+.info {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+}
+
+.more {
+    display: flex;
+    align-items: center;
+}
+
+.banner2 {
+    width: 100px;
+    margin-right: 20px;
+}
+
+.close {
+    position: absolute;
+    top: 15%;
+    right: 20px;
+    cursor: pointer;
+    font-size: smaller;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    padding: 10px;
+    border-radius: 30px;
+    background-color: rgb(209, 42, 42);
+}
+
+.close:active {
+    background-color: rgb(228, 74, 74);
+}
