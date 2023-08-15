@@ -1,11 +1,16 @@
 import './App.css'
+import { useState } from "react"
+import img5 from "./assets/img (5).jpg"
+import { MdOutlineKeyboardBackspace } from "react-icons/md";
 
 function App() {
+
+    const [visible, setVisible] = useState(true);
 
     const movieList = [
         {
             id: 0,
-            img: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg",
+            img: "https://e1.pxfuel.com/desktop-wallpaper/323/735/desktop-wallpaper-inception-movie-inception.jpg",
             title: "Inception",
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum culpa pariatur iure quis, impedit commodi quidem quaerat sint repudiandae rem. Dolorem odit eveniet blanditiis adipisci mollitia quas at fugiat expedita!",
             year: '2010',
@@ -18,7 +23,7 @@ function App() {
 
         {
             id: 1,
-            img: "https://e0.pxfuel.com/wallpapers/480/662/desktop-wallpaper-the-matrix-poster-amazing-and-printable-posters-collection-matrix-movie.jpg",
+            img: "https://images.fineartamerica.com/images-medium-large-5/no093-my-the-matrix-minimal-movie-poster-chungkong-art.jpg",
             title: "The Matrix",
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum culpa pariatur iure quis, impedit commodi quidem quaerat sint repudiandae rem. Dolorem odit eveniet blanditiis adipisci mollitia quas at fugiat expedita!",
             year: '2019',
@@ -31,8 +36,8 @@ function App() {
 
         {
             id: 2,
-            img: "https://image.tmdb.org/t/p/w500/jwG2CwxBrN4aVpyTrSIDhiy6sD6.jpg",
-            title: "Shaolin Monks",
+            img: "https://ih1.redbubble.net/image.632838574.0818/flat,750x,075,f-pad,750x1000,f8f8f8.jpg",
+            title: "The office",
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum culpa pariatur iure quis, impedit commodi quidem quaerat sint repudiandae rem. Dolorem odit eveniet blanditiis adipisci mollitia quas at fugiat expedita!",
             year: '1999',
             emoji: "🍀",
@@ -44,7 +49,7 @@ function App() {
 
         {
             id: 3,
-            img: "https://lumiere-a.akamaihd.net/v1/images/p_avengersendgame_19751_e14a0104.jpeg",
+            img: "https://www.movieposters.com/cdn/shop/products/108b520c55e3c9760f77a06110d6a73b_480x.progressive.jpg?v=1573652543",
             title: "Avengers",
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum culpa pariatur iure quis, impedit commodi quidem quaerat sint repudiandae rem. Dolorem odit eveniet blanditiis adipisci mollitia quas at fugiat expedita!",
             year: '2012',
@@ -56,39 +61,27 @@ function App() {
         },
 
         {
-            id: 0,
-            img: "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg",
-            title: "Inception",
+            id: 4,
+            img: "https://images.static-bluray.com/products/20/61320_1_front.jpg",
+            title: "Shaolin Monks",
             year: '2010',
             emoji: "🌸",
             watched: false,
         },
 
         {
-            id: 1,
-            img: "https://e0.pxfuel.com/wallpapers/480/662/desktop-wallpaper-the-matrix-poster-amazing-and-printable-posters-collection-matrix-movie.jpg",
-            title: "The Matrix",
+            id: 5,
+            img: "https://e0.pxfuel.com/wallpapers/175/682/desktop-wallpaper-jaws-famous-movie-posters-iconic-movie-posters-jaws-movie-poster-cool-movie-posters-thumbnail.jpg",
+            title: "Jaws",
             year: '2019',
             emoji: "🌿",
-            watched: false,
-        },
-        {
-            id: 2,
-            img: "https://image.tmdb.org/t/p/w500/jwG2CwxBrN4aVpyTrSIDhiy6sD6.jpg",
-            title: "Shaolin Monks",
-            year: '1999',
-            emoji: "🍀",
-            watched: false,
-        },
-        {
-            id: 3,
-            img: "https://lumiere-a.akamaihd.net/v1/images/p_avengersendgame_19751_e14a0104.jpeg",
-            title: "Avengers",
-            year: '2012',
-            emoji: "🌼",
             watched: false,
         },
     ]
+
+    const changeVisibility = () => {
+        setVisible(!visible);
+    }
 
     return (
         <>
@@ -105,70 +98,112 @@ function App() {
             </header>
 
             <section id='container'>
-                <section className='one'>
-                    <h1 className='list'>List of Movies</h1>
-
-                    <section className='movies'>
-                        {
-                            movieList.map(data => <Movie key={data.id} title={data.title} img={data.img} emoji={data.emoji} year={data.year} />)
-                        }
-                    </section>
-
-                    <p className='license'>Licensed under the MIT License ©</p>
+                <section className='movies'>
+                    {
+                        movieList.map(data => <Movie key={data.id} img={data.img} title={data.title} year={data.year} />)
+                    }
                 </section>
 
-                <section className='two one'>
-                    <h1 className='list'>Movies Watched</h1>
+                {
+                    visible
+                        ? <section className='watched'>
+                            <div className='back' onClick={changeVisibility}>
+                                <MdOutlineKeyboardBackspace />
+                            </div>
 
-                    <div>
-                        {
+                            <section className='movie_watched'>
+                                <img className='img2' src={img5} alt="img" />
 
-                            movieList.map(data => {
-                                (data.watched) && <Watched key={data.id} img={data.img} title={data.title} description={data.description} rate={data.rate} rating={data.rating} duration={data.duration} />
-                            })
-                        }
-                    </div>
+                                <div className='details'>
+                                    <h3>Shaolin Monks</h3>
+                                    <p>16 Jul 2010 ⏲ 148 min</p>
+                                    <p>Action, Adventure, Sci-fi</p>
+                                    <p>⭐ 8.8 IMDB rating</p>
+                                </div>
+                            </section>
 
-                    <p className='license'>Licensed under the MIT License ©</p>
+                            <section className='movie_details'>
+                                <section className='ratings'>
+                                    <div>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 10</div>
+                                    <button className='add'>+ Add to list</button>
+                                </section>
 
-                </section>
+                                <section>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quas quos debitis facilis at quo, asperiores hic inventore vero quod! Quisquam earum ut ex voluptas assumenda commodi, vitae doloremque voluptatum?</p>
+                                </section>
+                            </section>
+                        </section>
+
+                        : <section className='watched'>
+                            <div className="uwatched">
+                                <h1 className='uwtext'>
+                                    MOVIES YOU WATCHED
+                                </h1>
+
+                                <div className='widesc'>
+                                    <p>🎬 2 movies</p>
+                                    <p>⭐ 8.3</p>
+                                    <p>🚀 8.5</p>
+                                    <p>⏱ 82 mins</p>
+                                </div>
+                            </div>
+
+                            <div className='watchItems' onClick={changeVisibility}>
+                                <div className='wii'>
+                                    <img className='img' src="https://images.static-bluray.com/products/20/61320_1_front.jpg" alt="img" />
+
+                                    <div className="wii1">
+                                        <h1>Inception</h1>
+                                        <div className='widesc2'>
+                                            <p>⭐ 8.8</p>
+                                            <p>🚀 8.5</p>
+                                            <p>⏱ 82 mins</p>
+                                        </div>
+                                    </div>
+
+                                    <div className='cancel'>✖</div>
+                                </div>
+
+                            </div>
+
+                            <div className='watchItems' onClick={changeVisibility}>
+                                <div className='wii'>
+                                    <img className='img' src="https://www.movieposters.com/cdn/shop/products/108b520c55e3c9760f77a06110d6a73b_480x.progressive.jpg?v=1573652543" alt="img" />
+
+                                    <div className="wii1">
+                                        <h1>Avengers</h1>
+                                        <div className='widesc2'>
+                                            <p>⭐ 8.8</p>
+                                            <p>🚀 8.5</p>
+                                            <p>⏱ 82 mins</p>
+                                        </div>
+                                    </div>
+
+                                    <div className='cancel'>✖</div>
+                                </div>
+
+                            </div>
+                        </section>
+                }
             </section>
         </>
     )
 }
 
-const Movie = ({ img, title, year, emoji }) => {
+const Movie = ({ img, title, year, id }) => {
     return (
-        <div className='movie'>
-            <img className='banner' src={img} alt={title} />
+        <>
+            <div className='movie'>
+                <div>
+                    <img className='img' src={img} alt="img" />
+                </div>
 
-            <div>
-                <h1 className='title'>{title}</h1>
-                <p className='year'>{emoji} {year}</p>
-            </div>
-        </div>
-    )
-}
-
-const Watched = ({ img, title, rate, rating, duration, description }) => {
-
-    return (
-        <div className='watched'>
-            <img className='banner2' src={img} alt={title} />
-
-            <div className='info'>
-                <h1 className='title'>{title}</h1>
-                <p className='year'>{description}</p>
-
-                <div className='more'>
-                    <p className='year'>⭐ {rate}</p>
-                    <p className='year'>⭐ {rating}</p>
-                    <p className='year'>⌛ {duration} mins</p>
+                <div className='desc'>
+                    <h3>{title}</h3>
+                    <p>⏰ {year}</p>
                 </div>
             </div>
-
-            <div className='close'>✖</div>
-        </div>
+        </>
     )
 }
 

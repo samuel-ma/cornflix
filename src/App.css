@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;600;700&display=swap");
+
 :root {
     --bg: #212529;
     --black: #213547;
@@ -10,7 +14,7 @@
 
 body {
     color: var(--black);
-    font-family: "Poppins";
+    font-family: "Manrope";
     margin: 0;
     padding: 20px;
 }
@@ -25,6 +29,10 @@ body {
     border-radius: 10px;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+h3 {
+    font-weight: 800;
 }
 
 .logo {
@@ -54,107 +62,187 @@ body {
 }
 
 #container {
-}
-
-.one {
-    background-color: var(--purple);
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 5px;
-    color: var(--white);
+    display: flex;
+    align-items: top;
+    padding: 20px 20%;
+    gap: 20px;
 }
 
 .movies {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
-.license,
-.list {
-    text-align: center;
-    font-size: 30px;
-    margin: 10px;
-    color: var(--grey);
-}
-
-.license {
-    font-size: smaller;
+    flex: 1;
+    border: 1px solid var(--grey);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .movie {
-    cursor: pointer;
     display: flex;
     align-items: center;
-    padding: 10px;
-    border-bottom: 1px dashed var(--purple2);
-}
-
-.movie:hover {
-    background-color: var(--purple3);
-}
-
-.banner {
-    width: 60px;
-    margin-right: 20px;
-}
-
-.title {
-    margin: 5px;
-}
-
-.year {
-    margin: 5px;
-    color: var(--grey);
     font-size: smaller;
+    padding: 15px;
+    border-bottom: 1px solid var(--grey);
 }
 
-.two {
+.watchItems:hover,
+.movie:hover {
+    background: rgba(171, 91, 252, 0.185);
+    cursor: pointer;
+}
+
+.desc {
+    padding-left: 15px;
+    line-height: 15px;
+}
+
+.img {
+    width: 50px;
+    height: 70px;
+    object-fit: cover;
+    object-position: top;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 .watched {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px dashed var(--purple2);
-    padding: 20px;
     position: relative;
+    flex: 1;
+    border: 1px solid var(--grey);
+    border-radius: 10px;
+    line-height: 30px;
+    overflow: hidden;
 }
 
-.watched:hover {
-    background-color: var(--purple3);
+.uwatched {
+    flex: 1;
+    padding: 15px;
+    background-color: #19122c;
+    color: white;
 }
 
-.info {
-    display: flex;
-    align-items: start;
-    flex-direction: column;
+.uwtext {
+    text-align: center;
+    margin: 0;
+    font-weight: bold;
 }
 
-.more {
+.wii {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
-.banner2 {
-    width: 100px;
-    margin-right: 20px;
+.wii1 {
+    width: 55%;
 }
 
-.close {
-    position: absolute;
-    top: 15%;
-    right: 20px;
-    cursor: pointer;
+.wii1 h1 {
+    margin: 0;
+    font-weight: bold;
+}
+
+.widesc {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     font-size: smaller;
+}
+
+.widesc2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.watchItems {
+    padding: 15px;
+    border-bottom: 1px solid var(--grey);
+    font-size: smaller;
+    line-height: 15px;
+}
+
+.cancel {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 15px;
-    height: 15px;
-    padding: 10px;
-    border-radius: 30px;
-    background-color: rgb(209, 42, 42);
+    padding: 8px;
+    width: 8px;
+    height: 8px;
+    background-color: red;
+    border-radius: 16px;
+    color: white;
+    font-size: smaller;
 }
 
-.close:active {
-    background-color: rgb(228, 74, 74);
+.cancel:active {
+    background-color: rgba(255, 0, 0, 0.575);
+}
+
+.back {
+    cursor: pointer;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #6741d9;
+    color: white;
+}
+
+.add:active,
+.back:active {
+    background-color: #7950f2;
+}
+
+.movie_watched {
+    display: flex;
+    align-content: center;
+    border-bottom: 1px solid var(--grey);
+}
+
+.img2 {
+    flex: 1;
+    width: 180px;
+    height: 270px;
+    object-fit: cover;
+    object-position: top;
+    border-top-left-radius: 10px;
+}
+
+.details {
+    flex: 1;
+    font-size: smaller;
+    line-height: 17px;
+    padding: 20px;
+}
+
+.movie_details {
+    padding: 7%;
+    font-size: smaller;
+}
+
+.ratings {
+    padding: 20px;
+    border: 1px solid var(--grey);
+    border-radius: 10px;
+}
+
+.add {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #6741d9;
+    color: white;
+    margin-top: 10px;
+}
+
+@media (max-width: 800px) {
+    #container {
+        padding: 20px 0;
+    }
 }
