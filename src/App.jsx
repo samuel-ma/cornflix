@@ -85,108 +85,63 @@ function App() {
 
     return (
         <>
-            <header id='navbar'>
-                <div className='logo'>🥡 cornFlix</div>
-
+            <Navbar >
                 <div className='searchdiv'>
-                    <input className='search' type="text" placeholder='Search movies...' />
+                    <Search />
                 </div>
 
                 <div>
                     <p className='found'>Found {movieList.length} results</p>
                 </div>
-            </header>
+            </Navbar>
 
-            <section id='container'>
-                <section className='movies'>
-                    {
-                        movieList.map(data => <Movie key={data.id} img={data.img} title={data.title} year={data.year} />)
-                    }
-                </section>
-
-                {
-                    visible
-                        ? <section className='watched'>
-                            <div className='back' onClick={changeVisibility}>
-                                <MdOutlineKeyboardBackspace />
-                            </div>
-
-                            <section className='movie_watched'>
-                                <img className='img2' src={img5} alt="img" />
-
-                                <div className='details'>
-                                    <h3>Shaolin Monks</h3>
-                                    <p>16 Jul 2010 ⏲ 148 min</p>
-                                    <p>Action, Adventure, Sci-fi</p>
-                                    <p>⭐ 8.8 IMDB rating</p>
-                                </div>
-                            </section>
-
-                            <section className='movie_details'>
-                                <section className='ratings'>
-                                    <div>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 10</div>
-                                    <button className='add'>+ Add to list</button>
-                                </section>
-
-                                <section>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quas quos debitis facilis at quo, asperiores hic inventore vero quod! Quisquam earum ut ex voluptas assumenda commodi, vitae doloremque voluptatum?</p>
-                                </section>
-                            </section>
-                        </section>
-
-                        : <section className='watched'>
-                            <div className="uwatched">
-                                <h1 className='uwtext'>
-                                    MOVIES YOU WATCHED
-                                </h1>
-
-                                <div className='widesc'>
-                                    <p>🎬 2 movies</p>
-                                    <p>⭐ 8.3</p>
-                                    <p>🚀 8.5</p>
-                                    <p>⏱ 82 mins</p>
-                                </div>
-                            </div>
-
-                            <div className='watchItems' onClick={changeVisibility}>
-                                <div className='wii'>
-                                    <img className='img' src="https://images.static-bluray.com/products/20/61320_1_front.jpg" alt="img" />
-
-                                    <div className="wii1">
-                                        <h1>Inception</h1>
-                                        <div className='widesc2'>
-                                            <p>⭐ 8.8</p>
-                                            <p>🚀 8.5</p>
-                                            <p>⏱ 82 mins</p>
-                                        </div>
-                                    </div>
-
-                                    <div className='cancel'>✖</div>
-                                </div>
-
-                            </div>
-
-                            <div className='watchItems' onClick={changeVisibility}>
-                                <div className='wii'>
-                                    <img className='img' src="https://www.movieposters.com/cdn/shop/products/108b520c55e3c9760f77a06110d6a73b_480x.progressive.jpg?v=1573652543" alt="img" />
-
-                                    <div className="wii1">
-                                        <h1>Avengers</h1>
-                                        <div className='widesc2'>
-                                            <p>⭐ 8.8</p>
-                                            <p>🚀 8.5</p>
-                                            <p>⏱ 82 mins</p>
-                                        </div>
-                                    </div>
-
-                                    <div className='cancel'>✖</div>
-                                </div>
-
-                            </div>
-                        </section>
-                }
-            </section>
+            <Main visible={visible} changeVisibility={changeVisibility} movieList={movieList} />
         </>
+    )
+}
+
+const Navbar = ({ children }) => {
+    return (
+        <header id='navbar'>
+            <div className='logo'>🥡 cornFlix</div>
+
+            {children}
+        </header>
+    )
+}
+
+const Search = () => {
+    const [query, setQuery] = useState("");
+
+    const newQuery = (e) => {
+        e.preventDefault();
+        setQuery(e.target.value)
+    }
+
+    return (
+        <input className='search' type="text" placeholder='Search movies...' value={query} onChange={newQuery} />
+    )
+}
+
+const Main = ({ visible, changeVisibility, movieList }) => {
+    return (
+        <main id='container'>
+            <Movies movieList={movieList} />
+
+            {
+                visible ? <Details changeVisibility={changeVisibility} /> : <Watched changeVisibility={changeVisibility} />
+            }
+        </main>
+    )
+}
+
+const Movies = ({ movieList }) => {
+    return (
+        <section className='movies'>
+            {
+                movieList.map(data => <Movie key={data.id} img={data.img} title={data.title} year={data.year} />)
+            }
+        </section>
     )
 }
 
@@ -204,6 +159,93 @@ const Movie = ({ img, title, year, id }) => {
                 </div>
             </div>
         </>
+    )
+}
+
+const Details = ({ changeVisibility }) => {
+    return (
+        <section className='watched'>
+            <div className='back' onClick={changeVisibility}>
+                <MdOutlineKeyboardBackspace />
+            </div>
+
+            <section className='movie_watched'>
+                <img className='img2' src={img5} alt="img" />
+
+                <div className='details'>
+                    <h3>Shaolin Monks</h3>
+                    <p>16 Jul 2010 ⏲ 148 min</p>
+                    <p>Action, Adventure, Sci-fi</p>
+                    <p>⭐ 8.8 IMDB rating</p>
+                </div>
+            </section>
+
+            <section className='movie_details'>
+                <section className='ratings'>
+                    <div>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 10</div>
+                    <button className='add'>+ Add to list</button>
+                </section>
+
+                <section>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quas quos debitis facilis at quo, asperiores hic inventore vero quod! Quisquam earum ut ex voluptas assumenda commodi, vitae doloremque voluptatum?</p>
+                </section>
+            </section>
+        </section>
+    )
+}
+
+const Watched = ({ changeVisibility }) => {
+    return (
+        <section className='watched'>
+            <div className="uwatched">
+                <h1 className='uwtext'>
+                    MOVIES YOU WATCHED
+                </h1>
+
+                <div className='widesc'>
+                    <p>🎬 2 movies</p>
+                    <p>⭐ 8.3</p>
+                    <p>🚀 8.5</p>
+                    <p>⏱ 82 mins</p>
+                </div>
+            </div>
+
+            <div className='watchItems' onClick={changeVisibility}>
+                <div className='wii'>
+                    <img className='img' src="https://images.static-bluray.com/products/20/61320_1_front.jpg" alt="img" />
+
+                    <div className="wii1">
+                        <h1>Inception</h1>
+                        <div className='widesc2'>
+                            <p>⭐ 8.8</p>
+                            <p>🚀 8.5</p>
+                            <p>⏱ 82 mins</p>
+                        </div>
+                    </div>
+
+                    <div className='cancel'>✖</div>
+                </div>
+
+            </div>
+
+            <div className='watchItems' onClick={changeVisibility}>
+                <div className='wii'>
+                    <img className='img' src="https://www.movieposters.com/cdn/shop/products/108b520c55e3c9760f77a06110d6a73b_480x.progressive.jpg?v=1573652543" alt="img" />
+
+                    <div className="wii1">
+                        <h1>Avengers</h1>
+                        <div className='widesc2'>
+                            <p>⭐ 8.8</p>
+                            <p>🚀 8.5</p>
+                            <p>⏱ 82 mins</p>
+                        </div>
+                    </div>
+
+                    <div className='cancel'>✖</div>
+                </div>
+
+            </div>
+        </section>
     )
 }
 
