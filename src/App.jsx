@@ -2,6 +2,7 @@ import './App.css'
 import { useState } from "react"
 import img5 from "./assets/img (5).jpg"
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
+import { Stars } from './components/Stars';
 
 function App() {
 
@@ -181,10 +182,7 @@ const Details = ({ changeVisibility }) => {
             </section>
 
             <section className='movie_details'>
-                <section className='ratings'>
-                    <div>⭐⭐⭐⭐⭐⭐⭐⭐⭐⭐ 10</div>
-                    <button className='add'>+ Add to list</button>
-                </section>
+                <Stars max={10} />
 
                 <section>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quas quos debitis facilis at quo, asperiores hic inventore vero quod! Quisquam earum ut ex voluptas assumenda commodi, vitae doloremque voluptatum?</p>

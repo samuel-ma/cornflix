@@ -224,23 +224,6 @@ h3 {
     font-size: smaller;
 }
 
-.ratings {
-    padding: 20px;
-    border: 1px solid var(--grey);
-    border-radius: 10px;
-}
-
-.add {
-    cursor: pointer;
-    width: 100%;
-    border: none;
-    padding: 15px;
-    border-radius: 10px;
-    background-color: #6741d9;
-    color: white;
-    margin-top: 10px;
-}
-
 @media (max-width: 800px) {
     #container {
         padding: 20px 0;
